@@ -295,7 +295,9 @@ void ofAppiPhoneWindow::rotateXY(float &x, float &y) {
 
 void ofAppiPhoneWindow::enableRetinaSupport()
 {
-	retinaEnabled = true;
+    if( [[ UIScreen mainScreen ] respondsToSelector:@selector(scale) ] )    // only enable retina display if its supported.
+        if( [[ UIScreen mainScreen ] scale ] > 1 )
+            retinaEnabled = true;
 }
 
 void ofAppiPhoneWindow::enableDepthBuffer()
