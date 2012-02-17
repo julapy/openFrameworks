@@ -81,6 +81,10 @@ public:
 	void				enableRetinaSupport();
 	void				enableDepthBuffer();
 	void				enableAntiAliasing(int samples);
+    
+    void                disableRetinaSupport();
+    void                disableDepthBuffer();
+    void                disableAntiAliasing();
 	
 	bool				isDepthEnabled();
 	bool				isAntiAliasingEnabled();

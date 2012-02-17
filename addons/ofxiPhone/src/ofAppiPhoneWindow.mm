@@ -300,15 +300,30 @@ void ofAppiPhoneWindow::enableRetinaSupport()
             retinaEnabled = true;
 }
 
+void ofAppiPhoneWindow::disableRetinaSupport()
+{
+    retinaEnabled = false;
+}
+
 void ofAppiPhoneWindow::enableDepthBuffer()
 {
 	depthEnabled = true;
+}
+
+void ofAppiPhoneWindow::disableDepthBuffer()
+{
+    depthEnabled = false;
 }
 
 void ofAppiPhoneWindow::enableAntiAliasing(int samples)
 {
 	antiAliasingEnabled = true;
 	antiAliasingSamples = samples;
+}
+
+void ofAppiPhoneWindow::disableAntiAliasing()
+{
+    antiAliasingEnabled = false;
 }
 
 bool ofAppiPhoneWindow::isDepthEnabled()
