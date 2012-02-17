@@ -60,17 +60,31 @@
         eaglLayer.opaque = true;
 		eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
 										[NSNumber numberWithBool:YES], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
-		
+        
+        //---------------------------------------------------------------- update render settings.
+
+        if( depth )
+            ofxiPhoneGetOFWindow()->enableDepthBuffer();                // try to enable depth buffer.
+        else
+            ofxiPhoneGetOFWindow()->disableDepthBuffer();
+        
+        if( fsaaEnabled )
+            ofxiPhoneGetOFWindow()->enableAntiAliasing( samples );      // try to enable anti aliasing.
+        else
+            ofxiPhoneGetOFWindow()->disableAntiAliasing();
+            
+        if( retinaEnabled )
+            ofxiPhoneGetOFWindow()->enableRetinaSupport();              // try to enable retina support.
+        else
+            ofxiPhoneGetOFWindow()->disableRetinaSupport();
+        
+        //---------------------------------------------------------------- update render settings.
+        
 		touchScaleFactor=1;
-		if(retinaEnabled)
+		if( ofxiPhoneGetOFWindow()->isRetinaSupported() )
 		{
-			if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-				if ([[UIScreen mainScreen] scale] > 1)
-				{
-					[self setContentScaleFactor:[[UIScreen mainScreen] scale]];
-					touchScaleFactor=[[UIScreen mainScreen] scale];
-				}
-			}
+            [self setContentScaleFactor:[[UIScreen mainScreen] scale]];
+            touchScaleFactor=[[UIScreen mainScreen] scale];
 		}
 		
 		// TODO: add initSettings to override ES2Renderer even if available
