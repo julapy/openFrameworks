@@ -42,6 +42,9 @@
 	self.window = [ [ [ UIWindow alloc ] initWithFrame: [ [ UIScreen mainScreen ] bounds ] ] autorelease ];
 	[ self.window makeKeyAndVisible ];
     
+    if( ofxiPhoneGetOFWindow()->isRetinaSupported() )       // app has been created, if retina support has been enabled by user before the app was created,
+        ofxiPhoneGetOFWindow()->enableRetinaSupport();      // try to enable again. this time it will query UIScreen which is now available.
+    
 	//----- DAMIAN
 	// set data path root for ofToDataPath()
 	// path on iPhone will be ~/Applications/{application GUID}/openFrameworks.app/data

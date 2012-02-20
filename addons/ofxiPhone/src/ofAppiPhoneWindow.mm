@@ -301,6 +301,17 @@ void ofAppiPhoneWindow::rotateXY(float &x, float &y) {
 
 void ofAppiPhoneWindow::enableRetinaSupport()
 {
+    /**
+     *  accessing UIScreen before app is created will cause leaks.
+     *  to avoid this, set retinaEnabled flag to true and try to enableRetinaSupport again when app is created.
+     */
+    
+    if( !bAppCreated )
+    {
+        retinaEnabled = true;
+        return;
+    }
+    
     if( [[ UIScreen mainScreen ] respondsToSelector:@selector(scale) ] )    // only enable retina display if its supported.
         if( [[ UIScreen mainScreen ] scale ] > 1 )
             retinaEnabled = true;
