@@ -312,6 +312,8 @@ void ofAppiPhoneWindow::enableRetinaSupport()
         return;
     }
     
+    retinaEnabled = false;  // set it back to false as a default.
+    
     if( [[ UIScreen mainScreen ] respondsToSelector:@selector(scale) ] )    // only enable retina display if its supported.
         if( [[ UIScreen mainScreen ] scale ] > 1 )
             retinaEnabled = true;
