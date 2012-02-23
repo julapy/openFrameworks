@@ -471,12 +471,14 @@ void ofxiPhoneScreenGrab(id delegate) {
 	CGColorSpaceRelease(colorSpaceRef);
 	CGDataProviderRelease(provider);
 	
-	UIImage *image = [[UIImage alloc] initWithCGImage:imageRef];
-	CGImageRelease(imageRef);
-	
+    UIImage* image          = [ UIImage imageWithCGImage : imageRef ];      // make image from CGRef
+    NSData* imageData       = UIImagePNGRepresentation ( image );           // get PNG representation
+    UIImage* imageLossless  = [ UIImage imageWithData : imageData ];        // wrap UIImage around PNG representation
+    CGImageRelease(imageRef);
+    
 	SaveDelegate *saveDelegate = [SaveDelegate new];
 	saveDelegate.delegate = delegate;
-	UIImageWriteToSavedPhotosAlbum(image, saveDelegate, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+	UIImageWriteToSavedPhotosAlbum(imageLossless, saveDelegate, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
 
