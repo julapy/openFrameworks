@@ -338,16 +338,28 @@ static const NSString * ItemStatusContext;
     }
     
     NSDictionary * audioOutputSettings = nil;
-    audioOutputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-                           [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-                           [NSNumber numberWithFloat:preferredHardwareSampleRate], AVSampleRateKey,
-                           [NSNumber numberWithInt:numOfChannels], AVNumberOfChannelsKey,
-                           [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
-                           [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
-                           [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
-                           [NSNumber numberWithBool:NO], AVLinearPCMIsFloatKey,
-                           [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
-                           nil];
+	
+	if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_5_1) {
+		audioOutputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+							   [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
+							   [NSNumber numberWithFloat:preferredHardwareSampleRate], AVSampleRateKey,
+							   [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
+							   [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
+							   [NSNumber numberWithBool:NO], AVLinearPCMIsFloatKey,
+							   [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
+							   nil];
+	} else {
+		audioOutputSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+							   [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
+							   [NSNumber numberWithFloat:preferredHardwareSampleRate], AVSampleRateKey,
+							   [NSNumber numberWithInt:numOfChannels], AVNumberOfChannelsKey,
+							   [NSData dataWithBytes:&channelLayout length:sizeof(AudioChannelLayout)], AVChannelLayoutKey,
+							   [NSNumber numberWithInt:16], AVLinearPCMBitDepthKey,
+							   [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
+							   [NSNumber numberWithBool:NO], AVLinearPCMIsFloatKey,
+							   [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey,
+							   nil];
+	}
     
     NSArray * audioTracks = [self.asset tracksWithMediaType:AVMediaTypeAudio];
     if([audioTracks count] > 0) {
