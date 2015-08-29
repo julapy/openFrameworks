@@ -29,10 +29,10 @@
      *
      **/
     
-    self.navigationController = [[[UINavigationController alloc] init] autorelease];
+    self.navigationController = [[UINavigationController alloc] init];
     [self.window setRootViewController:self.navigationController];
     
-    [self.navigationController pushViewController:[[[AppViewController alloc] init] autorelease]
+    [self.navigationController pushViewController:[[AppViewController alloc] init]
                                          animated:YES];
     
     //--- style the UINavigationController
@@ -40,11 +40,6 @@
     self.navigationController.navigationBar.topItem.title = @"Home";
     
     return YES;
-}
-
-- (void) dealloc {
-    self.navigationController = nil;
-    [super dealloc];
 }
 
 @end

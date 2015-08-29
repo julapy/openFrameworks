@@ -1,66 +1,66 @@
-#include "ofApp.h"
+#include "ofApp05.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){	
+void ofApp05::setup(){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp05::update(){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp05::draw(){
 	
 }
 
 //--------------------------------------------------------------
-void ofApp::exit(){
+void ofApp05::exit(){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::touchDown(ofTouchEventArgs & touch){
+void ofApp05::touchDown(ofTouchEventArgs & touch){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::touchMoved(ofTouchEventArgs & touch){
+void ofApp05::touchMoved(ofTouchEventArgs & touch){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::touchUp(ofTouchEventArgs & touch){
+void ofApp05::touchUp(ofTouchEventArgs & touch){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::touchDoubleTap(ofTouchEventArgs & touch){
+void ofApp05::touchDoubleTap(ofTouchEventArgs & touch){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::touchCancelled(ofTouchEventArgs & touch){
+void ofApp05::touchCancelled(ofTouchEventArgs & touch){
     
 }
 
 //--------------------------------------------------------------
-void ofApp::lostFocus(){
+void ofApp05::lostFocus(){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::gotFocus(){
+void ofApp05::gotFocus(){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::gotMemoryWarning(){
+void ofApp05::gotMemoryWarning(){
 
 }
 
 //--------------------------------------------------------------
-void ofApp::deviceOrientationChanged(int newOrientation){
+void ofApp05::deviceOrientationChanged(int newOrientation){
 
 }
