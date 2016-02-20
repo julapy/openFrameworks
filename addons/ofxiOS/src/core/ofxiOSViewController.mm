@@ -3,6 +3,9 @@
 //  Created by lukasz karluk on 12/12/11.
 //
 
+#include <TargetConditionals.h>
+#if TARGET_OS_IOS || (TARGET_OS_IPHONE && !TARGET_OS_TV)
+
 #import <QuartzCore/QuartzCore.h>
 
 #include "ofxiOSViewController.h"
@@ -304,6 +307,7 @@
 //http://stackoverflow.com/questions/25935006/ios8-interface-rotation-methods-not-called
 
 //borg
+#ifdef __IPHONE_8_0
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
 
 	CGPoint center;
@@ -326,6 +330,7 @@
 		self.glView.frame = CGRectMake(0, 0, size.width,size.height);
 	}
 }
+#endif
 
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
@@ -378,3 +383,5 @@
 #endif
 
 @end
+
+#endif
